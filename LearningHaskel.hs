@@ -82,3 +82,57 @@ quicksort (x:xs) =
  let smallerSorted = quicksort [a | a <- xs, a <= x]
      biggerSorted = quicksort [a | a <- xs, a > x]
  in smallerSorted ++ [x] ++ biggerSorted
+ 
+{-
+	Practica Haskell 2do Cuatri 2021
+-}
+--Contar la cantidad de Pares de una lista
+contarPar :: Int -> Int
+contarPar x
+ | even x = 1
+ | otherwise = 0
+
+contarEsPar :: [Int] -> Int
+contarEsPar [] = 0
+contarEsPar (x:xs) = contarPar(x) + contarEsPar xs
+
+--Otra forma de sumar los pares
+sumarLosPares :: [Int] -> Int
+sumarLosPares [] = 0
+sumarLosPares (x:xs) = sum [x | x <- xs, even x]
+
+
+--Funcion para quitar hasta el tercer elemento de un array
+quitaTres :: [a] -> [a]
+quitaTres (_:_:_:xs) = xs
+quitaTres _ = []
+
+--Para sacar el segundo elemento
+quitarElSegundo :: [a] -> [a]
+quitarElSegundo (x:_:xs) = x:xs 
+
+{-
+	Funciones de Cola/Pila
+-}
+
+-- Cola
+-- Funcion Acolar
+queue :: [Int] -> Int -> [Int]
+queue [] y = [y]
+queue (x:xs) y = x:queue(xs y)
+
+-- Funcion desacolar
+dequeue :: [Int] -> Int
+dequeue [] = 0
+dequeue (x:xs) = x
+
+
+--Pila
+--Apilar?
+push :: [Int] -> Int -> [Int]
+push xs y = y:xs
+
+--Desapilar
+pop :: [Int] -> Int
+pop [] = 0
+pop (x:xs) = x
